@@ -11,8 +11,15 @@ const handleHome = (req, res) => res.send("Hello form home")
 
 const handleProfile = (req, res) => res.send("Hello form profile")
 
-app.get("/", handleHome);
+const betweenHome = (req, res, next) => {
+	console.log("Between");
+	next();
+}
 
-app.get("/profile", handleProfile)
+app.use(betweenHome);
 
-app.listen(PORT, handleListening)
+app.get("/", betweenHome, handleHome);
+
+app.get("/profile", handleProfile);
+
+app.listen(PORT, handleListening);
