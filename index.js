@@ -7,4 +7,16 @@ const handleListening = () => {
 	console.log(`listening on: http://localhost:${PORT}/`)
 };
 
+const handleHome = (req, res) => {
+	res.send("Hello form home")
+}
+
+const handleProfile = (req, res) => {
+	res.send("Hello form profile")
+}
+
+app.get("/", handleHome);
+
+app.get("/profile", handleProfile)
+
 app.listen(PORT, handleListening)
